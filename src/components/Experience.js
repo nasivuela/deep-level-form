@@ -47,7 +47,7 @@ class Item extends Component {
     const { item } = this.props;
     /**
      * Item contains one experience
-     * with the keys of item which values are strings
+     * We build an array only with the keys that have string values
      * and return it
      */
     return Object
