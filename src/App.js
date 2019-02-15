@@ -1,25 +1,75 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Experiences from './components/Experiences';
 import './App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      formData: {
+        "experience": [
+          {
+            "name": "Burbujas SL",
+            "roles": [
+              {
+                "role": "Product manager",
+                "from": "2017",
+                "until": "2018",
+                "challenges": [
+                  {
+                    "summary": "Reventar burbujas",
+                    "actions": [
+                      {
+                        "summary": "Apretar las burbujas",
+                        "tools": "Herramientas muy sofisticadas"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "references": [
+              {
+                "name": "",
+                "role": "",
+                "contact": ""
+              }
+            ]
+          }
+        ],
+      }
+    };
+    this.handleUpdate = this.handleUpdate.bind(this);
+  }
+
+  handleUpdate(name, value) {
+    /**
+     * Name has the key that we want to update 
+     * on first level of formData
+     * (currently only experiences)
+     */
+    this.setState(prevState => {
+      return {
+        formData: {
+          ...prevState.formData,
+          [name]: value
+        }
+      }
+    });
+  }
+
   render() {
+    const {
+      formData,
+    } = this.state;
+    const { experience } = formData;
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Experiences
+          onUpdate={this.handleUpdate}
+          collection={experience}
+          name="experience"
+        />
       </div>
     );
   }
