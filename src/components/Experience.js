@@ -64,7 +64,7 @@ class Item extends Component {
     } = this.props;
     /** 
      * item has one experience
-     * ex. {name: "bubu", roles: []}
+     * ex. {name: "bubu", roles: [], references: []}
      * -------
      * inputKeys contains an array
      * with the keys of item which values are strings
